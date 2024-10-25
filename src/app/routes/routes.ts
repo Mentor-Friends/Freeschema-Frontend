@@ -1,5 +1,7 @@
 import { create } from "../pages/example/create.example.ts";
 import { list } from "../pages/example/list.example.ts";
+import { TodoList } from "../pages/example/todo.list.ts";
+import { CreateTodo } from "../pages/example/create.todo.ts";
 import { phonebook } from "../pages/example/wrapper.example.ts";
 import homeIndex from "../pages/home/home.index.ts";
 import noPageFoundIndex from "../pages/noPageFound/noPageFound.index.ts";
@@ -7,25 +9,15 @@ import { login } from "../pages/user/login.example.ts";
 import { logout } from "../pages/user/logout.example.ts";
 import { register } from "../pages/user/register.example.ts";
 
+// Define route parameters type
 type RouteParams = {
-  /**
-   * This is a path for route url
-   */
   path: any;
-  /**
-   * This is a label for the route as a name
-   */
   linkLabel?: string;
-  /**
-   * This is the content that route renders
-   */
   content: any;
-  /**
-   * If path needs to be authenticated. ie. true, false
-   */
   isAuthenticated?: boolean;
 };
 
+// Define the routing array
 const routes: RouteParams[] = [
   {
     path: "/",
@@ -44,26 +36,38 @@ const routes: RouteParams[] = [
   },
   {
     path: "/logout",
-    linkLabel: "Signup",
+    linkLabel: "Logout",
     content: logout,
   },
   {
     path: "/example",
     linkLabel: "Example",
     content: create,
-    isAuthenticated: true
+    isAuthenticated: true,
   },
   {
     path: "/phonebook",
     linkLabel: "Phonebook",
     content: phonebook,
-    isAuthenticated: true
+    isAuthenticated: true,
   },
   {
     path: "/example-list",
-    linkLabel: "Example",
+    linkLabel: "Example List",
     content: list,
-    isAuthenticated: true
+    isAuthenticated: true,
+  },
+  {
+    path: "/create-todo",
+    linkLabel: "Create To-do",
+    content: CreateTodo,
+    isAuthenticated: true,
+  },
+  {
+    path: "/todo-list",
+    linkLabel: "To-do List",
+    content: TodoList,
+    isAuthenticated: true,
   },
   {
     path: "/404",
