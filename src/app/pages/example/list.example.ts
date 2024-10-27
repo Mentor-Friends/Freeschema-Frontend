@@ -1,7 +1,6 @@
 // src/app/pages/example/list.example.ts
 
-import {  DeleteConceptById, GetCompositionListListener,  NORMAL } from "mftsccs-browser";
-import { StatefulWidget } from "../../default/StatefulWidget";
+import {  DeleteConceptById, GetCompositionListListener,  NORMAL, StatefulWidget } from "mftsccs-browser";
 import { getLocalUserId } from "../user/login.service";
 import  './phonebook.style.css';
 export class list extends StatefulWidget{

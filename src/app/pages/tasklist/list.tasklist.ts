@@ -1,5 +1,4 @@
-import { DeleteConceptById, GetCompositionListListener, NORMAL } from "mftsccs-browser";
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { BinaryTree, DATAID, DeleteConceptById, GetCompositionListListener, GetLinkListListener, NORMAL, SearchQuery, SearchStructure, StatefulWidget } from "mftsccs-browser";
 import { getLocalUserId } from "../user/login.service";
 
 export class ListTask extends StatefulWidget{
@@ -10,11 +9,25 @@ export class ListTask extends StatefulWidget{
 
 
     widgetDidMount(): void {
-        let userId: number = getLocalUserId();
-        GetCompositionListListener("the_task", userId, this.inpage, this.page, NORMAL).subscribe((output: any)=>{
+
+        let searchStructure: SearchStructure = new SearchStructure();
+        searchStructure.composition = "the_task";
+        searchStructure.inpage = this.inpage;
+        searchStructure.page = this.page;
+
+
+        let searchQuery: SearchQuery = new SearchQuery();
+        searchQuery.fullLinkers = ["the_task_contact"];
+        // GetCompositionListListener("the_task", userId, this.inpage, this.page, NORMAL).subscribe((output: any)=>{
+        //     this.tasklist = output;
+        //     this.render();
+        // })
+
+        GetLinkListListener(searchStructure, [searchQuery], "", NORMAL).subscribe((output: any)=>{
             this.tasklist = output;
+            console.log("this is the output of the list listener", output);
             this.render();
-        })
+        });
     }
 
 
@@ -36,11 +49,23 @@ export class ListTask extends StatefulWidget{
                 let col2 = document.createElement("td");
                 let col3 = document.createElement("td");
                 let col4 = document.createElement("td");
+                let col5 = document.createElement("td");
                 let name = document.createElement("span");
                 let nameValue = this.tasklist[i].the_task.name
                 let phoneValue = this.tasklist[i].the_task.description
                 name.innerHTML = nameValue;
                 let phone = document.createElement("span");
+                let contactperson = document.createElement("span");
+                let contactpersonDatas = this.tasklist[i].the_task.the_task_contact;
+                let contactpersonData = "";
+                if(contactpersonDatas){
+                    for(let i=0 ; i< contactpersonDatas.length; i++){
+                        contactpersonData = contactpersonDatas[i].the_phonebook.name + "/" + contactpersonDatas[i].the_phonebook.phone;
+                    }
+                }
+
+                contactperson.innerHTML = contactpersonData;
+
                 phone.innerHTML = phoneValue;
                 let edit = document.createElement("button");
       
@@ -79,9 +104,10 @@ export class ListTask extends StatefulWidget{
                 col2.append(phone);
                 col3.append(del);
                 col4.append(edit);
-      
+                col5.append(contactperson);
                 row.appendChild(col1);
                 row.appendChild(col2);
+                row.appendChild(col5);
                 row.appendChild(col3);
                 row.appendChild(col4);
                 tableElement.append(row);
@@ -107,7 +133,8 @@ export class ListTask extends StatefulWidget{
         <thead>
           <tr>
               <th>name</th>
-              <th>phone</th>
+              <th>Description</th>
+              <th>Contact Person</th>
               <th>Delete</th>
               <th>Edit</th>
           </tr>

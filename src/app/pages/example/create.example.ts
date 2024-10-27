@@ -1,7 +1,6 @@
 // src/app/pages/example/create.example.ts
 
-import { CreateTheConnectionLocal, LocalSyncData, MakeTheInstanceConceptLocal, PatcherStructure, PRIVATE, UpdateComposition } from "mftsccs-browser";
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { CreateTheConnectionLocal, LocalSyncData, MakeTheInstanceConceptLocal, PatcherStructure, PRIVATE, StatefulWidget, UpdateComposition } from "mftsccs-browser";
 import  './phonebook.style.css';
 import { getLocalUserId } from "../user/login.service";
 export class create extends StatefulWidget{

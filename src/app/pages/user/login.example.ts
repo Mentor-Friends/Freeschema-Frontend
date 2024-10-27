@@ -1,7 +1,6 @@
 // src/app/pages/user/login.example.ts
 
-import { LoginToBackend } from "mftsccs-browser";
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { LoginToBackend, StatefulWidget } from "mftsccs-browser";
 import { saveTolocalStorage } from "./login.service";
 import { updateContent } from "../../routes/renderRoute.service";
 

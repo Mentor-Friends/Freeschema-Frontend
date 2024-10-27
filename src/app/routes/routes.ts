@@ -3,6 +3,7 @@ import { list } from "../pages/example/list.example.ts";
 import { phonebook } from "../pages/example/wrapper.example.ts";
 import homeIndex from "../pages/home/home.index.ts";
 import noPageFoundIndex from "../pages/noPageFound/noPageFound.index.ts";
+import { selector } from "../pages/tasklist/selector.tasklist.ts";
 import { tasklist } from "../pages/tasklist/wrapper.tasklist.ts";
 import { login } from "../pages/user/login.example.ts";
 import { logout } from "../pages/user/logout.example.ts";
@@ -64,6 +65,12 @@ const routes: RouteParams[] = [
     path: "/tasklist",
     linkLabel: "Task List",
     content: tasklist,
+    isAuthenticated: true
+  },
+  {
+    path: "/selector",
+    linkLabel: "Task List",
+    content: selector,
     isAuthenticated: true
   },
   {

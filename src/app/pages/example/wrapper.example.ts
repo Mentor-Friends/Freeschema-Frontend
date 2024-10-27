@@ -1,6 +1,6 @@
 // src/app/pages/example/wrapper.example.ts
 
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { StatefulWidget } from "mftsccs-browser";
 import { create } from "./create.example";
 import { list } from "./list.example";
 import './phonebook.style.css';

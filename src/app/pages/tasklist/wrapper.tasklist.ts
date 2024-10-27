@@ -1,6 +1,6 @@
 // src/app/pages/example/wrapper.example.ts
 
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { StatefulWidget } from "mftsccs-browser";
 import { CreateTask } from "./create.tasklist";
 import { ListTask } from "./list.tasklist";
 
@@ -8,6 +8,8 @@ export class tasklist extends StatefulWidget
 {
 
     mountChildWidgets(){
+        
+
         let widget1 = this.getElementById("widget1");
         let widget2 = this.getElementById("widget2");
         let creating =new CreateTask();
@@ -25,6 +27,7 @@ export class tasklist extends StatefulWidget
             this.childWidgets.push(listing);
             listing.mount(widget2);
          }
+
 
          
     }

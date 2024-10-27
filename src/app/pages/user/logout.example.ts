@@ -1,4 +1,4 @@
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { StatefulWidget } from "mftsccs-browser";
 import { updateContent } from "../../routes/renderRoute.service";
 
 export class logout extends StatefulWidget{
