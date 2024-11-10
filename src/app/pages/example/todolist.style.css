@@ -1,4 +1,4 @@
-/* table {
+table {
     width: 100%;
     border-collapse: collapse;
 }
@@ -21,4 +21,4 @@ button {
 .btn-primary {
     background-color: blue;
     color: white;
-} */
+}
