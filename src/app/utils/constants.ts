@@ -14,5 +14,6 @@ export const DATA_TYPES_RULES: { [key: string]: RegExp } = {
     password: /^.{6,}$/, // Matches passwords with at least 6 characters; you can customize as needed
     ipaddress: /^(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)\.(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4})$/, // Matches IPv4 or IPv6 formats
     uuid: /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/, // Matches UUID format
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ //Matches email formate
 };
 
