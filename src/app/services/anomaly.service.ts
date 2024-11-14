@@ -228,16 +228,4 @@ export class Anomaly {
             throw error;
         }
     }
-
-
-    // static async checkFormDataAnomaly(formData) {
-    //     if (!Anomaly.cacheInitialized) {
-    //         await Anomaly.initializeAnomalyParameters();
-    //     }
-
-    //     try{
-    //         const anomalyResults: Record<string, { valid: boolean, warnings: string[] }> = {};
-
-    //     }
-    // }
 }

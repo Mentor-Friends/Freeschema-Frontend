@@ -8,7 +8,6 @@ export interface FormErrors {
     [key: string]: string | undefined;
 }
 
-
 /**
  * Validates a single form field based on its data type and constraints.
  * It checks the value against the regex pattern defined in `DATA_TYPES_RULES`, length, and numeric constraints.
@@ -39,6 +38,10 @@ export const validateField = (
 ): string | undefined => {
     // 1. Validate using regex pattern for the data type
     const pattern = DATA_TYPES_RULES[dataType];
+    console.log("Detected Data Type : ", pattern.test(value));
+    console.log("Received Data Type : ", dataType);
+    console.log("Received Value : ", value);
+    
     if (pattern && !pattern.test(value)) {
         return `Invalid format for ${dataType} in ${fieldName}`;
     }

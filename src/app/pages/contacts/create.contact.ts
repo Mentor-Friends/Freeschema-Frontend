@@ -17,8 +17,8 @@ export class createContacts extends StatefulWidget{
               <input type="number" id="id" hidden>
     
               <div class="formbody">
-                <label for="name">Name (Text)</label>
-                <input type="text" id="name" placeholder="Name" data-type="text" concept-type="name" data-maxlength="50">
+                <label for="name">Name (Text-Only)</label>
+                <input type="text" id="name" placeholder="Name" data-type="textOnly" concept-type="name" data-maxlength="50">
               </div>
     
               <div class="formbody">
@@ -133,20 +133,20 @@ export class createContacts extends StatefulWidget{
             /**
              * Anomaly Detection
              */
-            try {
-              // Example for a single field anomaly check
-              const name = formData.name.value;
-              const anomaly_instance = new Anomaly();
-              const res = await anomaly_instance.checkConceptAnomaly('name', name);
-              console.log("Result of single anomaly test: ", res);
+            // try {
+            //   // Example for a single field anomaly check
+            //   const name = formData.name.value;
+            //   const anomaly_instance = new Anomaly();
+            //   const res = await anomaly_instance.checkConceptAnomaly('name', name);
+            //   console.log("Result of single anomaly test: ", res);
       
-              // Perform anomaly detection for the entire form
-              const anomalies = await Anomaly.checkAnomalyInBulk(formData);
-              console.log("Anomaly Check Result: ", anomalies);
+            //   // Perform anomaly detection for the entire form
+            //   const anomalies = await Anomaly.checkAnomalyInBulk(formData);
+            //   console.log("Anomaly Check Result: ", anomalies);
       
-            } catch (error) {
-                console.error("Anomaly check failed:", error);
-            }  
+            // } catch (error) {
+            //     console.error("Anomaly check failed:", error);
+            // }  
 
         });
     }
