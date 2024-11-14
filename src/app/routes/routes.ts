@@ -6,6 +6,7 @@ import noPageFoundIndex from "../pages/noPageFound/noPageFound.index.ts";
 import { login } from "../pages/user/login.example.ts";
 import { logout } from "../pages/user/logout.example.ts";
 import { register } from "../pages/user/register.example.ts";
+import { createContacts } from "../pages/contacts/create.contact.ts";
 
 type RouteParams = {
   /**
@@ -70,6 +71,11 @@ const routes: RouteParams[] = [
     linkLabel: "404",
     content: noPageFoundIndex,
   },
+  {
+    path: "/create-contacts",
+    linkLabel: "Create Contacts",
+    content: createContacts
+  }
 ];
 
 export default routes;
