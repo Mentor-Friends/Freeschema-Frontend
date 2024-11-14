@@ -3,6 +3,7 @@
 export const DATA_TYPES_RULES: { [key: string]: RegExp } = {
     number: /^\d+(\.\d+)?$/, // Matches integers or decimals
     text: /^[\s\S]*$/, // Matches any text
+    textOnly: /^[A-Za-z\s]+$/, // Matches only letters and spaces, no numbers or special characters
     document: /\.(pdf|docx?|pptx?|xlsx?)$/i, // Matches common document file extensions
     sound: /\.(mp3|wav|ogg|flac)$/i, // Matches common sound file extensions
     image: /\.(jpg|jpeg|png|gif|bmp|svg|webp)$/i, // Matches common image file extensions
