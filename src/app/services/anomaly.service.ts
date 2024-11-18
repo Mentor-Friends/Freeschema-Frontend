@@ -1,6 +1,6 @@
 import { DATA_TYPES_RULES } from "../utils/constants";
 import { environment } from "../environments/environment.dev";
-
+import { FormFieldData } from '../utils/formUtils'
 
 /**
  * Class representing the Anomaly detection logic for checking data validity based on predefined rules.
@@ -209,7 +209,7 @@ export class Anomaly {
      * @returns {Promise<Record<string, { valid: boolean, warnings: string[] }>>} - A promise that resolves to an object where each key is a concept type
      * and the value is an object containing `valid` (boolean) and `warnings` (array of warning messages).
      */
-    static async checkAnomalyInBulk(instanceData: Record<string, string>): Promise<Record<string, { valid: boolean, warnings: string[] }>> {
+    static async checkAnomalyInBulk(formData: Record<string, FormFieldData>): Promise<Record<string, { valid: boolean, warnings: string[] }>> {
         if (!Anomaly.cacheInitialized) {
             await Anomaly.initializeAnomalyParameters();
         }
@@ -217,7 +217,9 @@ export class Anomaly {
         try {
             const anomalyResults: Record<string, { valid: boolean, warnings: string[] }> = {};
 
-            for (const [typeConcept, instanceValue] of Object.entries(instanceData)) {
+            for (const [typeConcept, instanceData] of Object.entries(formData)) {
+
+                const instanceValue = instanceData.value
                 const { valid, warnings } = await new Anomaly().checkConceptAnomaly(typeConcept, instanceValue);
                 anomalyResults[typeConcept] = { valid, warnings };
             }
