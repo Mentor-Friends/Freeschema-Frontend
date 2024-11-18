@@ -16,7 +16,6 @@ export interface FormErrors {
  * @param fieldName - The name of the field being validated (e.g., "email", "phone").
  * @param dataType - The expected data type for the field (e.g., "text", "number").
  * @param value - The value of the field to validate.
- * @param required - Whether the field is required.
  * @param maxLength - The maximum allowed length for the field value.
  * @param minLength - The minimum allowed length for the field value.
  * @param minValue - The minimum allowed value for the field (for numeric fields).
@@ -30,7 +29,6 @@ export const validateField = (
     fieldName: string,
     dataType: string,
     value: string,
-    required: boolean,
     maxLength: number | null,
     minLength: number | null,
     minValue: number | null,
@@ -38,38 +36,37 @@ export const validateField = (
     accept: string | null,
     file: File | null
 ): string | undefined => {
-    // 1. Validate required field (must not be empty)
-    if (required && (value === null || value === '')) {
-        return `${fieldName} is required`;
-    }
-
-    // 2. Validate using regex pattern for the data type
+    // 1. Validate using regex pattern for the data type
     const pattern = DATA_TYPES_RULES[dataType];
-    if (pattern && value !== '' && !pattern.test(value)) {
+    console.log("Detected Data Type : ", pattern.test(value));
+    console.log("Received Data Type : ", dataType);
+    console.log("Received Value : ", value);
+    
+    if (pattern && !pattern.test(value)) {
         return `Invalid format for ${dataType} in ${fieldName}`;
     }
 
-    // 3. Validate maxLength
+    // 2. Validate maxLength
     if (maxLength !== null && value.length > maxLength) {
         return `${fieldName} exceeds the maximum length of ${maxLength}`;
     }
 
-    // 4. Validate minLength
+    // 3. Validate minLength
     if (minLength !== null && value.length < minLength) {
         return `${fieldName} must be at least ${minLength} characters long`;
     }
 
-    // 5. Validate minValue (only for numeric fields)
+    // 4. Validate minValue (only for numeric fields)
     if (minValue !== null && !isNaN(Number(value)) && Number(value) < minValue) {
         return `${fieldName} must be greater than or equal to ${minValue}`;
     }
 
-    // 6. Validate maxValue (only for numeric fields)
+    // 5. Validate maxValue (only for numeric fields)
     if (maxValue !== null && !isNaN(Number(value)) && Number(value) > maxValue) {
         return `${fieldName} must be less than or equal to ${maxValue}`;
     }
 
-    // 7. File validation: Check if this is a file input
+    // 6. File validation: Check if this is a file input
     if (dataType === 'file' && file) {
         // Validate the file type against the 'accept' attribute
         if (accept) {
@@ -83,9 +80,8 @@ export const validateField = (
         }
     }
 
-    return undefined; // Validation passed
+    return undefined;
 };
-
 
 /**
  * Validates all form fields by iterating over the provided form data.
@@ -101,7 +97,6 @@ export const validateFormData = (formData: {
     [key: string]: {
         value: string;
         dataType: string;
-        required: boolean;
         maxLength?: number | null; 
         minLength?: number | null; 
         minValue?: number | null;  
@@ -114,10 +109,10 @@ export const validateFormData = (formData: {
 
     // Iterate through the fields in the form data
     for (const fieldName in formData) {
-        const { value, dataType, required, maxLength = null, minLength = null, minValue = null, maxValue = null, accept = null, file = null } = formData[fieldName];
+        const { value, dataType, maxLength = null, minLength = null, minValue = null, maxValue = null, accept = null, file = null } = formData[fieldName];
 
         // Call the validateField function to validate each field
-        const error = validateField(fieldName, dataType, value, required, maxLength, minLength, minValue, maxValue, accept, file);
+        const error = validateField(fieldName, dataType, value, maxLength, minLength, minValue, maxValue, accept, file);
         
         // If there's an error, add it to the errors object
         if (error) {
