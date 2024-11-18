@@ -95,7 +95,7 @@ export class createContacts extends StatefulWidget{
         const contactForm = document.getElementById("contactForm") as HTMLFormElement;
         console.log("Call of Contact Form");
         
-    
+        // @LogExecution("write")
         contactForm.addEventListener("submit", async(event) => {
             event.preventDefault();
           
@@ -133,20 +133,20 @@ export class createContacts extends StatefulWidget{
             /**
              * Anomaly Detection
              */
-            // try {
-            //   // Example for a single field anomaly check
-            //   const name = formData.name.value;
-            //   const anomaly_instance = new Anomaly();
-            //   const res = await anomaly_instance.checkConceptAnomaly('name', name);
-            //   console.log("Result of single anomaly test: ", res);
+            try {
+              // Example for a single field anomaly check
+              const name = formData.name.value;
+              const anomaly_instance = new Anomaly();
+              const res = await anomaly_instance.checkConceptAnomaly('name', name);
+              console.log("Result of single anomaly test: ", res);
       
-            //   // Perform anomaly detection for the entire form
-            //   const anomalies = await Anomaly.checkAnomalyInBulk(formData);
-            //   console.log("Anomaly Check Result: ", anomalies);
+              // Perform anomaly detection for the entire form
+              const anomalies = await Anomaly.checkAnomalyInBulk(formData);
+              console.log("Anomaly Check Result: ", anomalies);
       
-            // } catch (error) {
-            //     console.error("Anomaly check failed:", error);
-            // }  
+            } catch (error) {
+                console.error("Anomaly check failed:", error);
+            }  
 
         });
     }
