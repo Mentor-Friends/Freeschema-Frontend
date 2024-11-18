@@ -85,7 +85,7 @@ export class createContacts extends StatefulWidget{
   
             <div class="formbody">
               <label for="name">Name (Text-Only)</label>
-              <input type="text" id="name" placeholder="Name" data-type="textOnly" concept-type="name" data-maxlength="50">
+              <input type="text" id="name" placeholder="Name" data-type="textOnly" concept-type="name" data-maxlength="50" data-required="true">
             </div>
   
             <div class="formbody">
