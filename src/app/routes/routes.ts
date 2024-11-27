@@ -1,8 +1,11 @@
+import countryListroutes from "../pages/countrylist/countryListroute.ts";
 import { create } from "../pages/example/create.example.ts";
 import { list } from "../pages/example/list.example.ts";
 import { phonebook } from "../pages/example/wrapper.example.ts";
 import homeIndex from "../pages/home/home.index.ts";
+import { MainComponent } from "../pages/mycomponent.ts/mainComponent.ts";
 import noPageFoundIndex from "../pages/noPageFound/noPageFound.index.ts";
+import profileRoutes from "../pages/profile/profileroute.ts";
 import { selector } from "../pages/tasklist/selector.tasklist.ts";
 import { tasklist } from "../pages/tasklist/wrapper.tasklist.ts";
 import { login } from "../pages/user/login.example.ts";
@@ -84,6 +87,14 @@ const routes: RouteParams[] = [
     linkLabel: "404",
     content: noPageFoundIndex,
   },
-];
+  {
+    path: "/component-list",
+    linkLabel: "Example Component",
+    content: MainComponent,
+    isAuthenticated: true
+  },
+    ...countryListroutes,
+    ...profileRoutes
+  ];
 
 export default routes;

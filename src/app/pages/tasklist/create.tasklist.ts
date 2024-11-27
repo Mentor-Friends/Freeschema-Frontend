@@ -62,7 +62,7 @@ export class CreateTask extends StatefulWidget
                 }
                 else{
                     MakeTheInstanceConceptLocal("the_task", "", true,userId,PRIVATE).then((mainconcept)=> {
-                        MakeTheInstanceConceptLocal("name", name.value,false, userId, PRIVATE).then((concept)=>{
+                        MakeTheInstanceConceptLocal("name", name.value,true, userId, PRIVATE).then((concept)=>{
                             MakeTheInstanceConceptLocal("description", phone.value, false, userId,PRIVATE).then((concept2) => {
                                 CreateTheConnectionLocal(mainconcept.id, concept.id, mainconcept.id, order, "", userId).then(()=>{
                                     CreateTheConnectionLocal(mainconcept.id, concept2.id, mainconcept.id, order, "", userId).then(()=>{
