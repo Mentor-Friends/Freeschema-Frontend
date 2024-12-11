@@ -70,11 +70,6 @@ const routes: RouteParams[] = [
     path: "/404",
     linkLabel: "404",
     content: noPageFoundIndex,
-  },
-  {
-    path: "/create-contacts",
-    linkLabel: "Create Contacts",
-    content: createContacts
   }
 ];
 
