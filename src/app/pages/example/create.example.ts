@@ -1,7 +1,7 @@
 // src/app/pages/example/create.example.ts
 
 import { CreateTheConnectionLocal, LocalSyncData, MakeTheInstanceConceptLocal, PatcherStructure, PRIVATE, UpdateComposition } from "mftsccs-browser";
-import { StatefulWidget } from "../../default/StatefulWidget";
+import { StatefulWidget } from "mftsccs-browser";
 import  './phonebook.style.css';
 import { getLocalUserId } from "../user/login.service";
 export class create extends StatefulWidget{
@@ -11,9 +11,9 @@ export class create extends StatefulWidget{
      * These are the events that user adds. These could be any thing like populating the data to creating the data
      * 
      */
-    addEvents(): void {
+    after_render(): void {
         let userId:number = getLocalUserId();
-        let order: 1;
+        let order:number = 1;
         let name = this.getElementById("name") as HTMLInputElement;
         let phone = this.getElementById("phone") as HTMLInputElement;
         let id = this.getElementById("id") as HTMLInputElement;
