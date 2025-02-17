@@ -6,7 +6,7 @@ import noPageFoundIndex from "../pages/noPageFound/noPageFound.index.ts";
 import { login } from "../pages/user/login.example.ts";
 import { logout } from "../pages/user/logout.example.ts";
 import { register } from "../pages/user/register.example.ts";
-import { createContacts } from "../pages/contacts/create.contact.ts";
+import { classlistAll } from "../pages/classroom/classroomall.index.ts";
 
 type RouteParams = {
   /**
@@ -58,6 +58,12 @@ const routes: RouteParams[] = [
     path: "/phonebook",
     linkLabel: "Phonebook",
     content: phonebook,
+    isAuthenticated: true
+  },
+  {
+    path: "/classroom",
+    linkLabel: "Classroom",
+    content: classlistAll,
     isAuthenticated: true
   },
   {
