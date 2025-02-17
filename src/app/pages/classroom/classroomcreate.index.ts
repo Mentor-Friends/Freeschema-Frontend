@@ -7,6 +7,7 @@ export class classlistCreate extends StatefulWidget{
             this.render();
         }
 
+        // we get the elements from the form and get their values to save.
         after_render(){
              let userId:number = getLocalUserId();
                     let name = this.getElementById("name") as HTMLInputElement;
@@ -48,6 +49,7 @@ export class classlistCreate extends StatefulWidget{
                     }
         }
 
+        // this function is used to create a class room given the top id of the composition.
         createClassRoom(mainConceptId:number, name:string, location:string ){
             let userId:number = getLocalUserId();
             let order:number = 1000;
